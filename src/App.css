@@ -1,0 +1,427 @@
+/*MAIN1---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.main1{
+    width: 90%;
+    min-height: 65vh;
+    margin: 0 auto;
+}
+
+/*MAIN---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*GENERALES-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+.content1-flex{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.contentImg1{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    outline: 10px solid rgb(215, 215, 215);
+}
+.contentImg2{
+    width: 650px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    outline: 10px solid rgb(215, 215, 215);
+}
+.descripcionImg{
+    text-align: justify;
+    width: 850px;
+}
+.descripcionImg2{
+    width: 500px;
+}
+@media(max-width:1370px){
+    .descripcionImg h1{
+        font-size: 1.5rem;
+    }
+}
+@media(max-width:1300px){
+    .contentImg1{
+        width: 250px;
+        height: 250px;
+    }
+}
+@media(max-width:1100px){
+    .content1-flex{
+        display: block;
+    }
+    .contentImg1{
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+    .contentImg1-abajo {
+        margin-top: 30px;
+    }
+    .descripcionImg{
+        width: 100%;
+    }
+    .descripcionImg2{
+        margin: 0 auto;
+    }
+}
+
+@media(max-width:550px){
+   .descripcionImg2{
+       width: 100%;
+    }
+}
+
+/*GENERALES-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Menu NAV -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.nav1{
+    background-color:  rgb(44, 44, 44);
+    height: 140px;
+    padding: 0 60px;
+    margin-bottom: 50px;
+}
+.contentHeader{
+    width: 100%;
+    height: 80px;
+}
+.menu1{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding: 10px;
+    
+}
+.menu1 li{
+    color:rgb(230, 230, 230);
+    list-style: none;
+    /*font-size: 18px;*/
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.menu1 li a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color:rgb(230, 230, 230);
+}
+.logo{
+    max-width: 80%;
+    height: auto;
+    margin-right: auto; /* Empuja hacia la izquierda sin romper el layout */
+}
+.logo img{
+    width: 32px;
+}
+ #hamburger{
+        display: none;
+        width: 100%;
+}
+
+#hamburger img{
+    width: 35px;
+    cursor: pointer;
+}
+#hamburger img:hover{
+    background-color:  rgb(73, 73, 73);
+    border-radius: 5px;
+}
+.menu2 {
+    display: none;
+    flex-direction: column;
+    padding: 5px 10px;
+    background-color: rgb(44, 44, 44);
+    width: 100%;
+    z-index: 1000;
+}
+
+.menu2.hidden {
+  display: none;
+}
+
+.menu2.visible {
+  display: flex;
+  align-items: center;
+}
+.menu2 li {
+    list-style: none;
+    padding: 10px 0;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(230, 230, 230);
+    
+  }
+  .menu2 li:hover{
+    background-color:  rgb(71, 71, 71);
+  }
+  .menu2 li span {
+    cursor: pointer;
+  }
+  .menu2 li a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+  }
+@media (max-width: 866px) {
+    .nav1{
+        padding: 0;
+    }
+    .menu1 {
+        display: none;
+    }
+    #hamburger{
+        display: flex;
+        flex-direction: column;
+    } 
+}
+/* Menu NAV -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/*Slide -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    .slider-wrapper{
+        position: relative;
+        /*max-width: 48rem;*/
+        width: 100%;
+        max-height: 550px;
+        margin: 0 auto;
+        overflow: hidden; /* evita que el contenido se salga del contenedor */
+        border-radius: 3px;
+    }
+    .slider{
+        display: flex;
+        /*aspect-ratio: 16/9; /* modificar relacion de aspecto */
+        overflow-x: auto; /*quitar desbordamiento de imagen del contenedor*/
+        overflow: hidden; /*ocultar barra de scroll*/
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth; /* hace que el desplazamiento sea suave y animado */
+        /*box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);*/
+        height: 100%;
+        width: 100%;
+    }
+
+    .slider img {
+        flex: 1 0 100%; /*ajustando imagen para que ocupen todo el contenedor*/
+        scroll-snap-align: start;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /*Contenedor que contiene a los botones para cambiar imgs*/
+    .slider-nav{
+        display: flex;
+        column-gap: 1rem;
+        position: absolute;
+        bottom: 1.25rem;
+        left: 50%; /*centrar en el medio pero el borde izquierdo del elemento*/
+        transform: translateX(-50%); /*Ayuda a left a posicionarlo perfectamente en el centro*/
+        z-index: 1;
+    }
+    .slider-nav a.active {
+            background-color: #333;
+    }
+
+    /*Botones para pasar imgs*/
+    .slider-nav a{
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #fff;
+        transition: opacity ease 250ms;
+    }
+    .slider-nav a:hover{
+        opacity: 1;
+    }
+    /*funcionalidad de las flechas para pasar imagen*/
+    .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    /*border-radius: 50%;*/
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0.75;
+    transition: opacity 250ms ease;
+    }
+    .slider-btn:hover {
+    opacity: 1;
+    }
+
+    .slider-btn.prev {
+    left: 0.5rem;
+    }
+    .slider-btn.next {
+    right: 0.5rem;
+    }
+    /*funcionalidad de las flechas para pasar imagen*/
+/*Slide -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/*Tarjetas de Productos---------------------------------------------------------------------------------------------------------------------------------------------------*/
+.contentTarjetas{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+    opacity: 1;
+    transition: height 0.5s ease, opacity 0.5s ease;
+    overflow: hidden;
+}
+.contentTarjetas-oculto{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.divTarjeta{
+    width: 300px;
+    height: auto;   
+}
+.nombreProd{
+    padding-bottom: 10px;
+}
+.divTarjeta ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.divTarjeta li {
+    list-style: none;
+}
+.tituloCat{
+    text-align: center;
+    color: rgb(230, 230, 230);
+    background-color: rgb(44, 44, 44);
+    padding-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.flecha {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+.flecha-activa {
+  transform: rotate(180deg);
+}
+
+.imgProduc{
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+}
+.contentImgProd{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    object-fit: cover;
+}
+@media(max-width:1370px){
+    .contentTarjetas{
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+}
+@media(max-width:1020px){
+    .contentTarjetas{
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+}
+@media(max-width:670px){
+    .contentTarjetas{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+/*Tarjetas de Productos---------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* Footer -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.divFooter{
+    width: 100%;
+    margin-top: 50px;
+    background-color:rgb(44, 44, 44);
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.contentFooter1{
+    display: flex;
+    justify-content: space-between ;
+    width: 80%;
+    font-size: 1.1rem;
+    color: rgb(230, 230, 230);
+    
+}
+.contentFooter1 a{
+ /*color: rgb(2, 53, 119);*/
+ color: rgb(230, 230, 230);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .contentFooter1 {
+       flex-direction: column;
+       gap: 10px; 
+    }
+    .divFooter{
+      height: auto;
+      padding-bottom: 20px;
+    }
+}
+.divRedes{
+    padding-top: 10px;
+    height: 35px;
+    display: flex;
+    gap: 20px;
+}
+.divRedes img{
+    cursor: pointer;
+}
+/* Footer -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/*POLITICA--------------------------------------------------------------------------------------------------------------------------------------------*/
+.divPolitica{
+    width: 1200px;
+    margin: 50px auto;
+    padding: 100px;
+    border-radius: 10px;
+    background-color: rgb(218, 218, 218);
+
+}
+@media(max-width:1270px){
+    .divPolitica {
+        width: 100%;
+        text-align: justify;
+    }
+}
+@media(max-width:1000px){
+    .divPolitica {       
+        padding: 30px;
+    }
+}
+@media(max-width:470px){
+    .divPolitica h1{
+        font-size: 1.5rem;
+    }
+    .divPolitica h2{
+        font-size: 1.2rem;
+    }
+}
+@media(max-width:400px){
+    .divPolitica h1{
+        font-size: 1.2rem;
+    }
+}
+/*POLITICA--------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*COntacto---------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*COntacto---------------------------------------------------------------------------------------------------------------------------------------------*/
