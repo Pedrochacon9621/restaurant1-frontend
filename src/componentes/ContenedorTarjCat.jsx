@@ -5,6 +5,8 @@ import { TarjetaProd } from "./TarjetaProd";
 export function ContenedorTarjCat() {
   const [productos, setProductos] = useState([]);
   const [categoriasVisibles, setCategoriasVisibles] = useState({});
+  const [cargando, setCargando] = useState(true);
+
 
   // Alternar visibilidad de tarjetas por categoría
   function toggleCategoria(id_cat) {
@@ -16,11 +18,16 @@ export function ContenedorTarjCat() {
 
   useEffect(() => {
     async function cargarProductosCat() {
+      setCargando(true); // Inicia carga
       const resProductos = await todosProductosCat();
       setProductos(resProductos.data);
+      setCargando(false); // Finaliza carga
     }
     cargarProductosCat();
   }, []);
+  if (cargando) {
+    return <div style={{ textAlign: "center", marginTop: "50px" }}>Cargando menús...</div>;
+  }
 
   // Agrupar productos por id_cat (maneja null como "sin_categoria")
   const productosPorCategoria = productos.reduce((grupo, producto) => {
