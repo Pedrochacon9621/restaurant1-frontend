@@ -21,3 +21,23 @@ export const todosProductosCat = ()=>{
 export const todosCategorias = ()=>{
     return apiUrl.get('/categorias/')
 }
+
+// Ruta menus con filtro-----------------------------------------------------------------------------------------------------------------------------
+export const filtrarProducto = async ({categoria_prod, precio_prod, nombre_prod}) =>{
+    const params = new URLSearchParams();
+    if (categoria_prod) params.append("categoria_prod", categoria_prod);
+    if (precio_prod) params.append("precio_prod__lte", precio_prod);
+    if (nombre_prod) params.append("nombre__icontains", nombre_prod);
+
+    try {
+    const response = await apiUrl.get(`/productos/?${params.toString()}`);
+    console.log(categoria_prod);
+    
+    return response.data;
+  } catch (error) {
+    console.error("Error al buscar platos:", error);
+    return [];
+  }
+
+}
+// Ruta menus con filtro-----------------------------------------------------------------------------------------------------------------------------

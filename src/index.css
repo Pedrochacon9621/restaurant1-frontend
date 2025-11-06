@@ -10,3 +10,6 @@ p, a, li{
 body {
     background-color: rgb(235, 235, 235);
 }
+input, label{
+    cursor: pointer;
+}

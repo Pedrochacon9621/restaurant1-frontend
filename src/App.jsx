@@ -15,6 +15,7 @@ import { Politica } from './paginas/Politica'
 
 //CSS y JS---------------------------------------------------------------------------------------------------------------------------------------------
 import './App.css'
+import { Filtros } from './componentes/Filtros'
 //CSS y JS---------------------------------------------------------------------------------------------------------------------------------------------
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
      <Nav/>
       <Routes>
          <Route path='/' element={<Inicio/>}/>
+         <Route path='/1' element={<Filtros/>}/>
          <Route path='/menu' element={<Menu/>}/>         
          <Route path='/nosotros' element={<Nosotros/>}/>
          <Route path='/contacto' element={<Contacto/>}/>
