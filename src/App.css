@@ -358,6 +358,7 @@
     padding: 15px;
     width: fit-content;
     outline: 10px solid rgb(250, 250, 250);
+    box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.5);
 }
 .inputFiltros{
     display: flex;
@@ -380,7 +381,35 @@
 .btnFiltros:hover{
     background-color: rgb(71, 71, 71);
 }
+    /*Filtros ya en componente contenedorTarjCat---------------------------------------*/
+        .contentBTNyComp{
+            position: relative;
+        }
+        .compFiltros{
+            position: absolute;
+            z-index: 1000;
+            top: 0;
+        }
+    /*Filtros ya en componente contenedorTarjCat---------------------------------------*/
+
 /*filtros---------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*Barra de busqueda---------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.inputBusqueda{
+    padding: 5px 10px;
+    height: 28px;
+    margin: 0;
+    margin-right: 5px;
+    cursor: text;
+}
+
+.content-barra-contenedorTarj{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+/*Barra de busqueda---------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Footer -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 .divFooter{

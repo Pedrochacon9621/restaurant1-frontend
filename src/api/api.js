@@ -27,11 +27,12 @@ export const filtrarProducto = async ({categoria_prod, precio_prod, nombre_prod}
     const params = new URLSearchParams();
     if (categoria_prod) params.append("categoria_prod", categoria_prod);
     if (precio_prod) params.append("precio_prod__lte", precio_prod);
-    if (nombre_prod) params.append("nombre__icontains", nombre_prod);
+    if (nombre_prod) params.append("nombre_prod__icontains", nombre_prod);
 
     try {
-    const response = await apiUrl.get(`/productos/?${params.toString()}`);
-    console.log(categoria_prod);
+    const response = await apiUrl.get(`/productosc/?${params.toString()}`);
+    console.log(precio_prod);
+    console.log(typeof precio_prod);
     
     return response.data;
   } catch (error) {
@@ -40,4 +41,18 @@ export const filtrarProducto = async ({categoria_prod, precio_prod, nombre_prod}
   }
 
 }
+//BARRA DE BUSQUEDA:
+export const buscarProducto = async ({busqueda}) => {
+  const params = new URLSearchParams();
+  if (busqueda) params.append("busqueda", busqueda);
+
+  try {
+    const response = await apiUrl.get(`/productosc/?${params.toString()}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error al buscar productos:", error);
+    return [];
+  }
+};
+
 // Ruta menus con filtro-----------------------------------------------------------------------------------------------------------------------------

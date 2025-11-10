@@ -2,8 +2,8 @@ import { Link } from "react-router-dom"
 export function Footer() {
     return(
         <div>
-            <div class="divFooter">
-                <div class="contentFooter1">
+            <div className="divFooter">
+                <div className="contentFooter1">
                     <div>
                         <p>© 2025 Pedro Chacón. Todos los derechos reservados.  </p><br/>
                         <Link to="/politica" target="_blank">🔗Politica de privacidad</Link>
@@ -20,7 +20,7 @@ export function Footer() {
                         <p><Link to="/contacto"> Contacto</Link></p>
                     </div>
                     <div>
-                        <p><a href="#top"> Volver arriba <img src="" alt=""/></a></p>
+                        <p><a href="#top"> Volver arriba</a></p>
                     </div>
                 </div>
             </div> 

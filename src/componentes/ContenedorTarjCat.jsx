@@ -1,12 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { todosProductosCat } from "../api/api";
 import { TarjetaProd } from "./TarjetaProd";
+import { Filtros } from "./Filtros";
+import { Barrabusqueda } from "./BarraBusqueda";
 
 export function ContenedorTarjCat() {
   const [productos, setProductos] = useState([]);
   const [categoriasVisibles, setCategoriasVisibles] = useState({});
   const [cargando, setCargando] = useState(true);
-
+  const [mostrarFiltros, setMostrarFiltros] = useState(false); // para la muestra del componente filtros
+  const filtrosRef = useRef(null);// para la muestra del componente filtros
+  // useEffect para la muestra del componente filtros:
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (filtrosRef.current && !filtrosRef.current.contains(event.target)) {
+        setMostrarFiltros(false);
+      }
+    }
+    if (mostrarFiltros) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mostrarFiltros]);
 
   // Alternar visibilidad de tarjetas por categoría
   function toggleCategoria(id_cat) {
@@ -16,20 +33,18 @@ export function ContenedorTarjCat() {
     }));
   }
 
-  useEffect(() => {
-    async function cargarProductosCat() {
+//Logica y useEffect para cargar todos los productos:
+  async function cargarProductosCat() {
       setCargando(true); // Inicia carga
       const resProductos = await todosProductosCat();
       setProductos(resProductos.data);
       setCargando(false); // Finaliza carga
-    }
+  }
+  useEffect(() => {
     cargarProductosCat();
   }, []);
-  if (cargando) {
-    return <div style={{ textAlign: "center", marginTop: "50px" }}>Cargando menús...</div>;
-  }
 
-  // Agrupar productos por id_cat (maneja null como "sin_categoria")
+  // Agrupar productos por id_cat (maneja null como "sin_categoria"):
   const productosPorCategoria = productos.reduce((grupo, producto) => {
     const id_cat = producto.categoria_prod?.id_cat ?? "sin_categoria";
     const nombre_cat = producto.categoria_prod?.nombre_cat?.trim() || "Sin categoría";
@@ -40,13 +55,44 @@ export function ContenedorTarjCat() {
         productos: [],
       };
     }
-
     grupo[id_cat].productos.push(producto);
     return grupo;
   }, {});
 
+// FUncion para actualizar productos POR FILTRO---- Esta se pasa al componente de FILTROS---
+  function actualizarProductosFiltrados(productosFiltrados) {
+    setProductos(productosFiltrados);
+  }
+//para quitar modal de filtros al hacer la busqueda filtrada:
+function ocultarFiltros() {
+  setMostrarFiltros(false)
+}
+
+//funcion para quitar filtros:
+function quitarFiltros() {
+  cargarProductosCat()
+}
+
+if (cargando) {
+    return <div style={{ textAlign: "center", marginTop: "50px" }}>Cargando menús...</div>;
+}
+
   return (
     <div>
+      <div className="contentBTNyComp">
+        <div style={{display:"flex", justifyContent:"space-between"}}>
+            <div style={{display:"flex", gap:"10px"}}>
+              <div className="tituloCat" style={{width:"120px", padding:"0"}} onClick={() => setMostrarFiltros((prev) => !prev)}><p>-- Filtrar --</p></div>
+              <p style={{textDecoration:"underline", cursor:"pointer"}} onClick={()=>{quitarFiltros()}}>Quitar filtros</p>
+            </div>
+            <Barrabusqueda/>
+        </div>
+          {mostrarFiltros && (
+            <div className="compFiltros" ref={filtrosRef}>
+              <Filtros onFiltrar={actualizarProductosFiltrados} onOcultarFiltros={ocultarFiltros}/>
+            </div>
+          )}
+      </div>
       <h1 style={{ textAlign: "center" }}>Lista de Menús</h1><hr /><br /><br />
       {Object.values(productosPorCategoria).map(({ categoria, productos }) => {
         const visible = categoriasVisibles[categoria.id_cat];
