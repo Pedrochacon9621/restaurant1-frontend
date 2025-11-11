@@ -303,9 +303,9 @@
     border-radius: 3px;
     cursor: pointer;
 }
-@media(max-width:350px){
+@media(max-width:360px){
     .tituloCat {
-        font-size: 20px;
+        font-size: 25px;
         display: flex;
         align-items: center;
         justify-content: center;
