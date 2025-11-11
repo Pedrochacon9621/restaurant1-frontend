@@ -80,7 +80,7 @@ if (cargando) {
   return (
     <div>
       <div className="contentBTNyComp">
-        <div style={{display:"flex", justifyContent:"space-between"}}>
+        <div className="contentBTNyComp2">
             <div style={{display:"flex", gap:"10px"}}>
               <div className="tituloCat" style={{width:"120px", padding:"0"}} onClick={() => setMostrarFiltros((prev) => !prev)}><p>-- Filtrar --</p></div>
               <p style={{textDecoration:"underline", cursor:"pointer"}} onClick={()=>{quitarFiltros()}}>Quitar filtros</p>

@@ -390,6 +390,20 @@
             z-index: 1000;
             top: 0;
         }
+        .contentBTNyComp2{
+            display: flex;
+             justify-content: space-between;
+        }
+        @media(max-width: 560px){
+            .contentBTNyComp2{
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .contentBTNyComp{
+                margin-bottom: 30px;
+            }
+        }
     /*Filtros ya en componente contenedorTarjCat---------------------------------------*/
 
 /*filtros---------------------------------------------------------------------------------------------------------------------------------------------------*/
