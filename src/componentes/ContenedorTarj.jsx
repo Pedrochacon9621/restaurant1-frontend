@@ -47,7 +47,8 @@ export function ContenedorTarj() {
     return(
         <div>
             <div className="content-barra-contenedorTarj">
-                <div className="contentBTNyComp" style={{marginRight:"10px"}}>
+                <Barrabusqueda onProducto={buscarProducto}/>
+                <div className="contentBTNyComp" style={{marginLeft:"10px"}}>
                     <div style={{display:"flex", gap:"10px"}}>
                         <div className="tituloCat" style={{width:"120px", padding:"0"}} onClick={() => setMostrarFiltros((prev) => !prev)}><p>-- Filtrar --</p></div>
                     </div>
@@ -57,7 +58,6 @@ export function ContenedorTarj() {
                         </div>
                     )}
                 </div>    
-                <Barrabusqueda onProducto={buscarProducto}/>
             </div>
             <div className="contentTarjetas">
                 {productos.map(producto=>(

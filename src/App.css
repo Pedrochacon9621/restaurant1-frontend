@@ -267,6 +267,7 @@
 /*Tarjetas de Productos---------------------------------------------------------------------------------------------------------------------------------------------------*/
 .contentTarjetas{
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-bottom: 50px;
@@ -421,8 +422,16 @@
 .content-barra-contenedorTarj{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 50px;
 }
+  @media(max-width: 560px){
+            .content-barra-contenedorTarj{
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+    }
 /*Barra de busqueda---------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Footer -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
