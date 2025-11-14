@@ -23,8 +23,9 @@ export const todosCategorias = ()=>{
 }
 
 // Ruta menus con filtro-----------------------------------------------------------------------------------------------------------------------------
-export const filtrarProducto = async ({categoria_prod, precio_prod, nombre_prod}) =>{
+export const filtrarProducto = async ({busqueda, categoria_prod, precio_prod, nombre_prod}) =>{
     const params = new URLSearchParams();
+    if (busqueda) params.append("busqueda", busqueda);
     if (categoria_prod) params.append("categoria_prod", categoria_prod);
     if (precio_prod) params.append("precio_prod__lte", precio_prod);
     if (nombre_prod) params.append("nombre_prod__icontains", nombre_prod);
